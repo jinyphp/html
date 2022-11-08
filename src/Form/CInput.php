@@ -5,7 +5,7 @@
  */
 namespace Jiny\Html\Form;
 
-use \Jiny\Html\Ctag;
+use \Jiny\Html\CTag;
 
 class CInput extends CTag {
 
