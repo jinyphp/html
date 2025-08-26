@@ -1,14 +1,16 @@
-# button 태그
-## HTML `button` 태그 설명
+# Button 컴포넌트
 
-HTML의 `button` 태그는 사용자가 클릭할 수 있는 버튼을 생성합니다. 이 태그는 다양한 유형의 버튼을 생성하는 데 사용되며, 여러 속성을 통해 동작을 제어할 수 있습니다.
+Jiny HTML에서 제공하는 버튼 관련 컴포넌트들입니다. 다양한 유형의 버튼을 객체 지향적으로 생성하고 관리할 수 있습니다.
 
-* Jiny\Html\Form\CButton
-* Jiny\Html\Form\CButtonCancel
-* Jiny\Html\Form\CButtonDelete
-* Jiny\Html\Form\CButtonExport
-* Jiny\Html\Form\CButtonDropdown
-* Jiny\Html\Form\CButtonQMessage
+## 지원하는 버튼 컴포넌트
+
+* `Jiny\Html\CButton` - 기본 버튼
+* `Jiny\Html\Form\CButtonCancel` - 취소 버튼
+* `Jiny\Html\Form\CButtonDelete` - 삭제 버튼
+* `Jiny\Html\Form\CButtonExport` - 내보내기 버튼
+* `Jiny\Html\Form\CButtonDropdown` - 드롭다운 버튼
+* `Jiny\Html\Form\CButtonQMessage` - 확인 메시지 버튼
+* `Jiny\Html\Form\CSubmitButton` - 제출 버튼
 
 ### 기본 구조
 

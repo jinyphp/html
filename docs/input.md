@@ -1,31 +1,41 @@
-# input 태그
+# Input 컴포넌트
 
-이 문서는 `CInput` 클래스를 사용하여 HTML `input` 태그를 생성하고 관리하는 방법에 대해 설명합니다. `CInput` 클래스는 Laravel 환경에서 사용할 수 있도록 설계된 객체 지향적인 HTML 태그 생성기입니다.
+`CInput` 클래스를 사용하여 HTML `input` 태그를 객체 지향적으로 생성하고 관리하는 방법에 대해 설명합니다.
 
-## input 태그 개요
+## 개요
 
-HTML의 `input` 태그는 사용자로부터 데이터를 입력받을 때 사용됩니다. 다양한 유형의 입력을 지원하며, 예를 들어 텍스트, 비밀번호, 이메일, 날짜 등을 받을 수 있습니다.
+HTML의 `input` 태그는 사용자로부터 데이터를 입력받을 때 사용되는 핵심 폼 요소입니다. 다양한 유형의 입력을 지원하며, 텍스트, 비밀번호, 이메일, 날짜, 파일 등을 처리할 수 있습니다.
 
-기본 문법:
-```html
-<input type="text" name="username" value="John Doe">
-```
+## 지원하는 Input 컴포넌트
 
-## CInput 클래스 설명
+* `Jiny\Html\Form\CInput` - 기본 입력 필드
+* `Jiny\Html\Form\CTextBox` - 텍스트 입력 박스
+* `Jiny\Html\Form\CEmail` - 이메일 입력 필드  
+* `Jiny\Html\Form\CTextArea` - 텍스트 영역
+* `Jiny\Html\html\CInputSecret` - 비밀번호 입력
+* `Jiny\Html\html\CNumericBox` - 숫자 입력
+* `Jiny\Html\html\CPassBox` - 패스워드 입력
 
-`CInput` 클래스는 `input` 태그를 객체 지향적으로 생성하고 관리하기 위한 여러 메서드를 제공합니다. 이를 통해 코드의 재사용성과 가독성을 높일 수 있습니다.
+## 기본 사용법
 
-### 클래스 생성자
+### CInput 생성자
 
-`CInput` 객체는 다음과 같은 생성자를 통해 생성할 수 있습니다:
 ```php
-use html\src\Form\CInput;
+use Jiny\Html\Form\CInput;
 
+// 기본 텍스트 입력 필드
 $input = new CInput('text', 'username', 'John Doe');
+
+// 다양한 입력 유형
+$email = new CInput('email', 'user_email');
+$password = new CInput('password', 'user_password');
+$number = new CInput('number', 'age');
 ```
+
+**생성자 매개변수:**
 - `type`: 입력 필드의 유형 (기본값: 'text')
-- `name`: 입력 필드의 이름
-- `value`: 입력 필드의 초기 값
+- `name`: 입력 필드의 name 속성
+- `value`: 입력 필드의 초기값 (선택사항)
 
 ### 주요 메서드
 

@@ -11,15 +11,22 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.1"
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
     },
     "autoload": {
         "psr-4": {
-            "Jiny\\Html\\":"src/"
+            "Jiny\\Html\\": "src/"
         },
-        "files" : [
-            "src/Helpers/Helper.php",
-            "src/Helpers/Factory.php"
+        "files": [
+            "src/Helpers/helpers.php",
+            "src/Helpers/constants.php"
         ]
     },
     "autoload-dev": {
