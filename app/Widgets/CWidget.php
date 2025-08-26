@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Widgets;
 
 namespace App\Html\Widget;
 

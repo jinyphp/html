@@ -14,7 +14,7 @@
 
 ```
 jiny/html/
-├── src/                   # 소스 코드
+├── app/                   # 소스 코드
 │   ├── Core/             # 핵심 기본 클래스
 │   │   └── CTag.php      # 모든 HTML 요소의 기본 클래스
 │   ├── Components/       # 기본 HTML 컴포넌트

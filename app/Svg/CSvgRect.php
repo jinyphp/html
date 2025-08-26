@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Svg;
 /*
 ** Zabbix
 ** Copyright (C) 2001-2021 Zabbix SIA
@@ -19,9 +20,14 @@
 **/
 
 
-class CSvgGroup extends CSvgTag {
+class CSvgRect extends CSvgTag {
 
-	public function __construct() {
-		parent::__construct('g', true);
+	public function __construct($x, $y, $width, $height) {
+		parent::__construct('rect', true);
+
+		$this->setAttribute('x', $x);
+		$this->setAttribute('y', $y);
+		$this->setAttribute('width', $width);
+		$this->setAttribute('height', $height);
 	}
 }

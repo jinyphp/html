@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Svg;
 /*
 ** Zabbix
 ** Copyright (C) 2001-2021 Zabbix SIA
@@ -19,7 +20,7 @@
 **/
 
 
-class CSvgGraphBar extends CSvgGroup {
+class CSvgGraphPoints extends CSvgGroup {
 
 	protected $path;
 	protected $itemid;
@@ -36,18 +37,17 @@ class CSvgGraphBar extends CSvgGroup {
 			'color' => CSvgGraph::SVG_GRAPH_DEFAULT_COLOR,
 			'pointsize' => CSvgGraph::SVG_GRAPH_DEFAULT_POINTSIZE,
 			'transparency' => CSvgGraph::SVG_GRAPH_DEFAULT_TRANSPARENCY,
-			'width' => CSvgGraph::SVG_GRAPH_DEFAULT_LINE_WIDTH,
 			'order' => 1
 		];
 	}
 
 	public function makeStyles() {
 		$this
-			->addClass(CSvgTag::ZBX_STYLE_GRAPH_BAR)
-			->addClass(CSvgTag::ZBX_STYLE_GRAPH_BAR.'-'.$this->itemid.'-'.$this->options['order']);
+			->addClass(CSvgTag::ZBX_STYLE_GRAPH_POINTS)
+			->addClass(CSvgTag::ZBX_STYLE_GRAPH_POINTS.'-'.$this->itemid.'-'.$this->options['order']);
 
 		return [
-			'.'.CSvgTag::ZBX_STYLE_GRAPH_BAR.'-'.$this->itemid.'-'.$this->options['order'] => [
+			'.'.CSvgTag::ZBX_STYLE_GRAPH_POINTS.'-'.$this->itemid.'-'.$this->options['order'] => [
 				'fill-opacity' => $this->options['transparency'] * 0.1,
 				'fill' => $this->options['color']
 			]
@@ -56,33 +56,18 @@ class CSvgGraphBar extends CSvgGroup {
 
 	protected function draw() {
 		foreach ($this->path as $point) {
-			if (array_key_exists(3, $point)) {
-				list($x, $y, $label, $width, $group_x) = $point;
-
-				$this->addItem(
-					(new CSvgPolygon(
-						[
-							[round($x - floor($width / 2)), ceil($this->options['y_zero'])],
-							[round($x - floor($width / 2)), ceil($y)],
-							[round($x + ceil($width / 2)), ceil($y)],
-							[round($x + ceil($width / 2)), ceil($this->options['y_zero'])]
-						]
-					))
-						// Value.
-						->setAttribute('label', $label)
-						// X for tooltip.
-						->setAttribute('data-px', floor($group_x))
-				);
-			}
+			$this->addItem(
+				(new CSvgCircle($point[0], $point[1], $this->options['pointsize']))->setAttribute('label', $point[2])
+			);
 		}
 	}
 
 	public function toString($destroy = true) {
-		$this->setAttribute('data-set', 'bar')
+		$this->setAttribute('data-set', 'points')
 			->setAttribute('data-metric', CHtml::encode($this->item_name))
 			->setAttribute('data-color', $this->options['color'])
 			->addItem(
-				(new CSvgCircle(-10, -10, $this->options['width'] + 4))
+				(new CSvgCircle(-10, -10, $this->options['pointsize'] + 4))
 					->addClass(CSvgTag::ZBX_STYLE_GRAPH_HIGHLIGHTED_VALUE)
 			)
 			->draw();

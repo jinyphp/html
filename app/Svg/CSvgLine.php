@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Svg;
 /*
 ** Zabbix
 ** Copyright (C) 2001-2021 Zabbix SIA
@@ -19,13 +20,14 @@
 **/
 
 
-class CSvgCircle extends CSvgTag {
+class CSvgLine extends CSvgTag {
 
-	public function __construct($x, $y, $diameter) {
-		parent::__construct('circle', true);
+	public function __construct($x1, $y1, $x2, $y2) {
+		parent::__construct('line', true);
 
-		$this->setAttribute('cx', round($x));
-		$this->setAttribute('cy', round($y));
-		$this->setAttribute('r', round($diameter / 2, 1));
+		$this->setAttribute('x1', $x1);
+		$this->setAttribute('y1', $y1);
+		$this->setAttribute('x2', $x2);
+		$this->setAttribute('y2', $y2);
 	}
 }

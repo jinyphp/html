@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Svg;
 /*
 ** Zabbix
 ** Copyright (C) 2001-2021 Zabbix SIA

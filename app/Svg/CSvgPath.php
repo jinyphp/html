@@ -1,4 +1,5 @@
 <?php
+namespace Jiny\Html\Svg;
 /*
 ** Zabbix
 ** Copyright (C) 2001-2021 Zabbix SIA
@@ -19,13 +20,42 @@
 **/
 
 
-class CSvgText extends CSvgTag {
+class CSvgPath extends CSvgTag {
 
-	public function __construct($x, $y, $text) {
-		parent::__construct('text', true);
+	protected $directions;
+	protected $last_value = 0;
 
-		$this->setAttribute('x', $x);
-		$this->setAttribute('y', $y);
-		$this->addItem($text);
+	public function __construct($directions = '') {
+		parent::__construct('path');
+
+		$this->setDirections($directions);
+	}
+
+	public function setDirections($directions) {
+		$this->directions = $directions;
+	}
+
+	public function moveTo($x, $y) {
+		$this->directions .= ' M'.floor($x).','.ceil($y);
+
+		return $this;
+	}
+
+	public function lineTo($x, $y) {
+		$this->directions .= ' L'.floor($x).','.ceil($y);
+
+		return $this;
+	}
+
+	public function closePath() {
+		$this->directions .= ' Z';
+
+		return $this;
+	}
+
+	public function toString($destroy = true) {
+		$this->setAttribute('d', trim($this->directions));
+
+		return parent::toString($destroy);
 	}
 }

@@ -14,10 +14,10 @@
     </testsuites>
     <coverage>
         <include>
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">./app</directory>
         </include>
         <exclude>
-            <directory>./src/Helpers</directory>
+            <directory>./app/Helpers</directory>
         </exclude>
     </coverage>
 </phpunit>

@@ -22,11 +22,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Jiny\\Html\\": "src/"
+            "Jiny\\Html\\": "app/"
         },
         "files": [
-            "src/Helpers/helpers.php",
-            "src/Helpers/constants.php"
+            "app/Helpers/helpers.php",
+            "app/Helpers/constants.php"
         ]
     },
     "autoload-dev": {
